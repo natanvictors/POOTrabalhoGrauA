@@ -12,15 +12,4 @@ public class ContaPoupanca extends ContaBancaria {
         return diaAniversario;
     }
     
-   public void movimenta (Operacao op) {
-        super.movimenta(op); // Reutiliza a lógica de Saque e Depósito da classe mãe
-        
-        if (op.getTipo() == 'J') { // Trata especificamente dos juros
-            double taxa = op.getValor();
-            double rendimento = getSaldoAtual() * (taxa / 100);
-            setSaldoAtual(getSaldoAtual() + rendimento);
-            getJuros().setQuantidade(getJuros().getQuantidade() + 1); // Adiciona um na quantidade de depósitos feitos
-            getJuros().setValorTotal(getJuros().getValorTotal() + rendimento); // Soma o valor do novo deposito aos que já forma feitos
-        }
-    }
 }

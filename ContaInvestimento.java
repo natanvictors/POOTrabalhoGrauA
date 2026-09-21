@@ -9,16 +9,7 @@ public class ContaInvestimento extends ContaBancaria {
     }
 
     public void movimenta(Operacao op) {
-        super.movimenta(op); // Permite tratar depósito (D) reaproveitando da mãe
-        
-        if (op.getTipo() == 'J') {
-            double taxa = op.getValor();
-            double rendimento = getSaldoAtual() * (taxa / 100);
-            setSaldoAtual(getSaldoAtual() + rendimento);
-            getJuros().setQuantidade(getJuros().getQuantidade() + 1); // Adiciona um na quantidade de depósitos feitos
-            getJuros().setValorTotal(getJuros().getValorTotal() + rendimento); // Soma o valor do novo deposito aos que já forma feitos
-        }
-    
+        super.movimenta(op); // Permite tratar depósito (D) reaproveitando da mãe    
     }
 
     public Data getVencimento() {
