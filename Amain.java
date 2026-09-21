@@ -236,8 +236,8 @@ public class Amain {
                 System.out.println("\n--- Integrantes ---");
                 System.out.println("Aryel Andrada Bergmann");
                 System.out.println("Julia Herold de Longhi");
-                System.out.println("Natan");
-                System.out.println("Aryssa");
+                System.out.println("Natan Victor da Rosa de Oliveira");
+                System.out.println("Aryssa Thainá Orita Sirahata");
                 System.out.println("Melissa Raupp");
             }
 
