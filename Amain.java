@@ -21,6 +21,16 @@ public class Amain {
             if (opcao == 1) {
                 if (contaAberta == null) {
                     String nome = Teclado.leString("Digite o seu nome:");
+                    if (nome != null && !nome.trim().isEmpty()) {
+                        String[] partes = nome.trim().split("\\s+");
+                        StringBuilder nomeFormatado = new StringBuilder();
+                        for (String parte : partes) {
+                            if (parte.length() > 0) {
+                                nomeFormatado.append(parte.substring(0, 1).toUpperCase()).append(parte.substring(1).toLowerCase()).append(" ");
+                            }
+                        }
+                        nome = nomeFormatado.toString().trim();
+                    }
                     String cpf = Teclado.leString("Digite o seu CPF: ");
                     while (cpf.length() != 11) { // Segue perguntando caso o CPF não tenha, ao menos, 11 dígitos
                         System.out.println("CPF INVÁLIDO! O CPF precisa de 11 dígitos");
@@ -45,6 +55,7 @@ public class Amain {
                     Cliente A1 = new Cliente(nome, cpf, D1); // Objeto que efetivamente recebe todos os dados do cliente
                     Double saldoIncial = Teclado.leDouble("Qual o saldo inicial da sua conta?");
                     char tipoConta = Teclado.leChar("Selecione o tipo de conta que queres abrir\nUse 'C' para conta corrente.\nUse 'P' para conta poupança.\nUse 'I' para conta de investimento");
+                    tipoConta = Character.toUpperCase(tipoConta);
 
                     if (tipoConta == 'C') {
                         Double limiteCredito = Teclado.leDouble("Qual o limite de crédito quer para sua conta?");
@@ -75,6 +86,8 @@ public class Amain {
                         contaAberta = new ContaInvestimento(saldoIncial, V1); // Cria a conta de investimento
                         contaAberta.setCliente(A1); // Informa os dados do cliente
 
+                    } else {
+                        System.out.println("ERRO! Tipo de conta inválido. Tente abrir a conta novamente.");
                     }
                 } else
                     System.out.print("ERRO! Você já possui uma conta aberta");
