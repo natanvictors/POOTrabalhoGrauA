@@ -24,17 +24,11 @@ public class Amain {
             if (opcao == 1) {
                 if (contaAberta == null) {
                     String nome = Teclado.leString("Digite o seu nome:");
-                    if (nome != null && !nome.trim().isEmpty()) {
-                        String[] partes = nome.trim().split("\\s+");
-                        StringBuilder nomeFormatado = new StringBuilder();
-                        for (String parte : partes) {
-                            if (parte.length() > 0) {
-                                nomeFormatado.append(parte.substring(0, 1).toUpperCase())
-                                        .append(parte.substring(1).toLowerCase()).append(" ");
-                            }
-                        }
-                        nome = nomeFormatado.toString().trim();
-                    }
+                    // Verifica se o nome não é nulo e não está vazio (caso o usuário tenha dado apenas 'Enter' com espaços)
+                    if (nome != null && !nome.trim().isEmpty()) { 
+                    // Converte tudo para MAIÚSCULAS e limpa espaços na "ponta"
+                        nome = nome.toUpperCase().trim(); 
+                    }                   
                     String cpf = Teclado.leString("Digite o seu CPF: ");
                     while (cpf.length() != 11) { // Segue perguntando caso o CPF não tenha, ao menos, 11 dígitos
                         System.out.println("CPF INVÁLIDO! O CPF precisa de 11 dígitos");
